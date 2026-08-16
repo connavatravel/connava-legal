@@ -24,6 +24,7 @@ a:hover { text-decoration-thickness: 2px; }
   top: 0;
   z-index: 10;
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   background: rgba(250,249,252,.92);
   border-bottom: 1px solid var(--border);
 }
@@ -36,11 +37,18 @@ a:hover { text-decoration-thickness: 2px; }
   gap: 18px;
 }
 .brand {
-  font-weight: 800;
-  letter-spacing: -.02em;
-  font-size: 19px;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
   color: var(--text);
   text-decoration: none;
+}
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 38px;
+  max-width: 180px;
+  object-fit: contain;
 }
 .nav-links {
   margin-left: auto;
@@ -180,9 +188,37 @@ footer {
   font-weight: 800;
 }
 @media (max-width: 720px) {
-  .nav { align-items: flex-start; padding: 16px 0; }
-  .nav-links { gap: 10px; }
-  .hero, section, .card { padding: 22px; border-radius: 20px; }
+  .nav {
+    align-items: center;
+    padding: 14px 0;
+    min-height: 64px;
+  }
+  .brand-logo {
+    height: 32px;
+    max-width: 145px;
+  }
+  .nav-links {
+    gap: 10px;
+  }
+  .nav-links a {
+    font-size: 13px;
+  }
+  .hero, section, .card {
+    padding: 22px;
+    border-radius: 20px;
+  }
   main { padding-top: 28px; }
   .grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-links {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
